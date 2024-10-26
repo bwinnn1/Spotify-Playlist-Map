@@ -12,6 +12,7 @@ import {
   rem,
   useMantineTheme,
 } from '@mantine/core';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDisclosure } from '@mantine/hooks';
 import {
   IconLogout,
@@ -24,35 +25,37 @@ import {
   IconSwitchHorizontal,
   IconChevronDown,
 } from '@tabler/icons-react';
-
-// IMPORT OUR LOGO/IMAGE
 import classes from './Router.module.css';
 
 const user = {
   name: 'Reveille X',
   email: 'canipetdatdawg@gmail.com',
-  // IDK how the image stuff works yet
   image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png',
 };
 
 const tabs = [
-  'Home',
-  'My MusicMap',
-  'Insights',
-  'Discover',
-  'Friends & Connections',
-  'Settings',
-  'NUCLEAR BOMB',  
+  { label: 'Home', path: '/' },
+  { label: 'My MusicMap', path: '/musicmap' },
+  { label: 'Insights', path: '/insights' },
+  { label: 'Discover', path: '/discover' },
+  { label: 'Friends & Connections', path: '/friends' },
+  { label: 'Settings', path: '/settings' },
+  { label: 'NUCLEAR BOMB', path: '/nuclear' },
 ];
 
 export function Router() {
   const theme = useMantineTheme();
   const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
+  const navigate = useNavigate();
 
   const items = tabs.map((tab) => (
-    <Tabs.Tab value={tab} key={tab}>
-      {tab}
+    <Tabs.Tab
+      value={tab.label}
+      key={tab.label}
+      onClick={() => navigate(tab.path)}
+    >
+      {tab.label}
     </Tabs.Tab>
   ));
 
@@ -60,8 +63,6 @@ export function Router() {
     <div className={classes.header}>
       <Container className={classes.mainSection} size="md">
         <Group justify="space-between">
-          {/* CALL LOGO/IMAGE HERE */}
-
           <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
 
           <Menu
