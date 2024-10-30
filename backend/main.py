@@ -7,8 +7,8 @@ from flask import Flask, redirect, request, jsonify, session
 app = Flask(__name__)
 app.secret_key = '0cc529d1-69a3-443b-b6be-6073abba0313'
 
-CLIENT_ID = 'b9687e977b9742d480352ad1c054048e' #provided by spotify
-CLIENT_SECRECT = 'b11e26821c4a46c6a227b0a34787db75'
+CLIENT_ID = '' #provided by spotify
+CLIENT_SECRECT = ''
 REDIRECT_URI = 'http://localhost:500/callback'
 
 AUTH_URL = 'https://accounts.spotify.com/authorize'
