@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = '0cc529d1-69a3-443b-b6be-6073abba0313'
 
 CLIENT_ID = '' #provided by spotify
-CLIENT_SECRECT = ''
+CLIENT_SECRECT = '' #use your own client_secrect for this 
 REDIRECT_URI = 'http://localhost:500/callback'
 
 AUTH_URL = 'https://accounts.spotify.com/authorize'
